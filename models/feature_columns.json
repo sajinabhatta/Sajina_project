@@ -1,0 +1,18 @@
+{
+  "columns": [
+    "country",
+    "region",
+    "os",
+    "browser",
+    "device_type",
+    "round_trip_ms",
+    "login_successful",
+    "is_attack_ip",
+    "login_hour",
+    "is_night",
+    "ip_velocity_1h",
+    "country_changed",
+    "device_changed",
+    "rtt_zscore"
+  ]
+}

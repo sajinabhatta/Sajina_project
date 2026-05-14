@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Model Performance</h2>
+{% if metrics and metrics.models %}
+  <div class="metrics-grid">
+    {% for model_name, model in metrics.models.items() %}
+      <section class="card">
+        <h3>{{ model_name }}</h3>
+        <p>Precision: {{ "%.4f"|format(model.precision) }}</p>
+        <p>Recall: {{ "%.4f"|format(model.recall) }}</p>
+        <p>F1 Score: {{ "%.4f"|format(model.f1_score) }}</p>
+        <p>ROC-AUC: {{ "%.4f"|format(model.roc_auc) }}</p>
+      </section>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>Metrics not found. Run <code>python src/run_pipeline.py</code> first.</p>
+{% endif %}
+{% endblock %}

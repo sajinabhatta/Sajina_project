@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dataset Insights</h2>
+<div class="insight-grid">
+  {% for image in images %}
+    <figure class="card">
+      <img src="{{ url_for('diagram_image', filename=image) }}" alt="{{ image }}">
+      <figcaption>{{ image.replace('_', ' ').replace('.png', '') }}</figcaption>
+    </figure>
+  {% endfor %}
+</div>
+{% if not images %}
+<p>No diagrams available yet. Run <code>python src/run_pipeline.py</code>.</p>
+{% endif %}
+{% endblock %}

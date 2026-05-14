@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Live Login Risk Checker</h2>
+<p>Enter login attempt details to receive instant account takeover risk prediction.</p>
+
+<form method="post" action="{{ url_for('predict') }}" class="card form-grid">
+  <input name="ip_address" placeholder="IP Address" required>
+  <input name="country" placeholder="Country" required>
+  <input name="region" placeholder="Region" required>
+  <input name="os" placeholder="Operating System" required>
+  <input name="browser" placeholder="Browser" required>
+  <input name="device_type" placeholder="Device Type" required>
+  <input name="round_trip_ms" type="number" step="0.1" placeholder="Round Trip Time (ms)" required>
+  <input name="login_timestamp" type="datetime-local" required>
+  <select name="login_successful">
+    <option value="1">Login Successful</option>
+    <option value="0">Login Failed</option>
+  </select>
+  <select name="is_attack_ip">
+    <option value="0">IP Not in Attack List</option>
+    <option value="1">IP Known as Attack IP</option>
+  </select>
+  <button type="submit">Evaluate Risk</button>
+</form>
+
+{% if error %}
+<div class="card result error">{{ error }}</div>
+{% endif %}
+{% if result %}
+<div class="card result {{ result.risk_level|lower }}">
+  <h3>Prediction Result</h3>
+  <p><strong>Prediction:</strong> {{ result.prediction }}</p>
+  <p><strong>Probability:</strong> {{ "%.4f"|format(result.probability) }}</p>
+  <p><strong>Risk Level:</strong> {{ result.risk_level }}</p>
+  <p><strong>Recommended Action:</strong> {{ result.recommended_action }}</p>
+</div>
+{% endif %}
+{% endblock %}

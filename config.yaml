@@ -1,0 +1,10 @@
+# Model Prediction Risk Thresholds (Probabilities)
+risk_thresholds:
+  medium: 0.40
+  high: 0.75
+
+# Actions based on Risk
+actions:
+  low: "Allow"
+  medium: "Flag for Review"
+  high: "Block Immediately"

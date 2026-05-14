@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attempting Login Detection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <h1>LoginShield ML</h1>
+    <nav>
+      <a href="{{ url_for('home') }}">Home / Live Checker</a>
+      <a href="{{ url_for('performance') }}">Model Performance</a>
+      <a href="{{ url_for('insights') }}">Dataset Insights</a>
+      <a href="{{ url_for('about') }}">About</a>
+    </nav>
+  </aside>
+  <main class="content">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
